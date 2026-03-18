@@ -8,10 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5262158f-0390-4fb0-95a8-669fa219d0e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CineWebApi/CineWebApi.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CineWebApi/Controllers/MoviesController.cs" afterDir="false" />
-    </list>
+    <list default="true" id="5262158f-0390-4fb0-95a8-669fa219d0e9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +98,7 @@
       <updated>1773693904826</updated>
       <workItem from="1773693906342" duration="1851000" />
       <workItem from="1773695766284" duration="101000" />
-      <workItem from="1773695870354" duration="2331000" />
+      <workItem from="1773695870354" duration="3634000" />
     </task>
     <servers />
   </component>
