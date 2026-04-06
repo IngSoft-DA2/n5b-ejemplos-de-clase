@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Cine.Mappings")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0cfbfc3713732d07d988c160575a849567c68785")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ec1a5f5d55890124ee2a9068d852c72147129f7")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cine.Mappings")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cine.Mappings")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
