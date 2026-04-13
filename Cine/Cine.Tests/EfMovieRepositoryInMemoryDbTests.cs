@@ -39,6 +39,8 @@ public sealed class EfMovieRepositoryInMemoryDbTests
     [TestMethod]
     public void GetAll_ReturnsMoviesFromDatabase()
     {
+        var initialCount = _repository.GetAll().Count;
+
         _context.Movies.AddRange(
             new Movie { Title = "Una batalla tras otra", Stars = 5.0 },
             new Movie { Title = "Hoppers", Stars = 4.3 },
@@ -48,7 +50,7 @@ public sealed class EfMovieRepositoryInMemoryDbTests
 
         var movies = _repository.GetAll();
 
-        Assert.AreEqual(3, movies.Count);
+        Assert.AreEqual(initialCount + 3, movies.Count);
         Assert.IsTrue(movies.Any(m => m.Title == "Una batalla tras otra"));
         Assert.IsTrue(movies.Any(m => m.Title == "Hoppers"));
         Assert.IsTrue(movies.Any(m => m.Title == "Scream 7"));
