@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yMGPtOFmQ1g=",
+  "dgSpecHash": "eK+SD/BgU5M=",
   "success": true,
-  "projectFilePath": "/Users/bacosta/ORT2026S1/M5B/Cine/CineWebApi/CineWebApi.csproj",
+  "projectFilePath": "/Users/bacosta/mine/n5b-ejemplos-de-clase/Cine/CineWebApi/CineWebApi.csproj",
   "expectedPackageFiles": [
     "/Users/bacosta/.nuget/packages/microsoft.aspnetcore.openapi/8.0.13/microsoft.aspnetcore.openapi.8.0.13.nupkg.sha512",
     "/Users/bacosta/.nuget/packages/microsoft.entityframeworkcore/8.0.13/microsoft.entityframeworkcore.8.0.13.nupkg.sha512",
