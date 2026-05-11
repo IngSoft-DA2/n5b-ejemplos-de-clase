@@ -1,42 +1,49 @@
 # Estructura de carpetas
 
 <aside>
-*No hay una estructuración correcta. Suele variar dependiendo, generalmente, de la organización. Acá tienen un ejemplo para seguir….*
+*No existe una única estructura correcta. Suele variar según la organización y el tipo de proyecto. Acá tienen un ejemplo para usar como guía.*
 </aside>
 
-# Una opción…
+# Una opción (Angular standalone)
 
 ```markdown
 src/
 ├── app/
-│   ├── core/                   
+│   ├── core/
+│   │   ├── guards/
+│   │   ├── interceptors/
+│   │   └── services/
+│   │
 │   ├── shared/
+│   │   ├── components/
+│   │   ├── directives/
+│   │   └── pipes/
 │   ├── features/
 │   │   ├── auth/
-│   │   └── profile/
+│   │   ├── movies/
+│   │   └── actors/
 │   │
 │   ├── layouts/
 │   │   ├── main-layout/
 │   │   └── auth-layout/
 │   │
-│   ├── assets/
-│   ├── app-routing.module.ts
 │   ├── app.component.ts
-│   └── app.module.ts
+│   ├── app.routes.ts
+│   └── app.config.ts
 │
 ├── assets/
-├── styles/
-│
+├── styles.css
 ├── index.html
-├── main.ts
-└── angular.json
+└── main.ts
 ```
 
 ## Responsabilidades
 
-- `core` contiene contenido lógico que se utiliza a lo largo de toda la aplicación. Algunos ejemplos son servicios *(globales… logs, themes….)*, interceptors o guardas (lo vamos a ir viendo…)
-- `shared` también contenido reutilizable en toda la aplicación pero muy asociado a la UI. Por ejemplo botones, cards, inputs…
-- `features` separamos de forma modular el contenido y lo hacemos específico para cada *feature.* Dentro de cada feature pueden tener algo así:
+- `core`: contiene lógica transversal y de infraestructura para toda la app. Ejemplos: servicios globales, guardas, interceptores y manejo de autenticación/sesión.
+- `shared`: contiene piezas reutilizables de UI (componentes, directivas y pipes) que no dependen de una feature específica.
+- `features`: organiza el proyecto por dominio funcional (por ejemplo, `auth`, `movies`, `actors`). Cada feature agrupa su propia lógica, vistas y rutas.
+
+    Dentro de cada feature, una opción habitual es:
     
     ```markdown
     ├── components/
@@ -55,4 +62,9 @@ src/
     └── auth.routes.ts
     ```
     
-- `layouts` envuelven a otros componentes y definen cómo se distribuyen en pantalla. Por ejemplo, un *layout* con un *navbar* que mantengo a lo largo de toda la aplicación y voy cambiando el contenido central.
+- `layouts`: envuelven otros componentes y definen la distribución general de pantalla. Por ejemplo, un layout con navbar persistente y un área central que cambia por ruta.
+
+## Nota
+
+- Si usás `NgModules`, podés reemplazar `app.config.ts` y `app.routes.ts` por `app.module.ts` y `app-routing.module.ts`.
+- Evitá duplicar `assets` dentro de `app/` y en `src/`: mantené una única carpeta `src/assets/`.
