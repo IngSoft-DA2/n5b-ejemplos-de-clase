@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Cine</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.13" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Cine.Contracts\Cine.Contracts.csproj" />
+      <ProjectReference Include="..\Cine.Mappings\Cine.Mappings.csproj" />
+      <ProjectReference Include="..\Cine.BusinessLogic.Abstractions\Cine.BusinessLogic.Abstractions.csproj" />
+      <ProjectReference Include="..\Cine.Repository.Abstractions\Cine.Repository.Abstractions.csproj" />
+      <ProjectReference Include="..\ServiceFactory\ServiceFactory.csproj" />
+    </ItemGroup>
+
+</Project>
