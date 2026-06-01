@@ -435,3 +435,163 @@ En este ejemplo:
 1. `authInterceptor` agrega el token.
 
 2. `authErrorInterceptor` maneja errores de autenticación.
+
+---
+
+## 7. Pipes en Angular
+
+### 7.1 Qué es un pipe
+
+Un pipe en Angular transforma un valor para mostrarlo en la plantilla.
+
+Sirve para formatear datos sin ensuciar el HTML ni mover lógica simple al componente.
+
+Ejemplos típicos:
+
+- mostrar una fecha con formato;
+
+- transformar texto a mayúsculas;
+
+- mostrar una moneda;
+
+- convertir minutos en horas y minutos.
+
+Idea clave:
+
+> Un pipe transforma datos para la vista. No reemplaza servicios, guards ni interceptors.
+
+---
+
+### 7.2 Pipes comunes de Angular
+
+| Pipe        | Para qué sirve          | Ejemplo                      |
+| ----------- | ----------------------- | ---------------------------- |
+| `uppercase` | Pasa texto a mayúsculas | `angular` → `ANGULAR`        |
+| `lowercase` | Pasa texto a minúsculas | `Angular` → `angular`        |
+| `titlecase` | Capitaliza palabras     | `hola mundo` → `Hola Mundo`  |
+| `date`      | Formatea fechas         | `2026-05-25` → `25/05/2026`  |
+| `currency`  | Formatea importes       | `250` → `$250`               |
+| `percent`   | Formatea porcentajes    | `0.35` → `35%`               |
+
+Ejemplo en template:
+
+```html
+<p>{{ movie.title | uppercase }}</p>
+
+<p>{{ movie.releaseDate | date: "dd/MM/yyyy" }}</p>
+```
+
+---
+
+### 7.3 Pipe personalizado: duración de película
+
+Si una película guarda su duración en minutos, un pipe puede mostrarla de una forma más clara.
+
+#### Crear archivo del pipe
+
+Una posible ubicación:
+
+```txt
+src/app/shared/pipes/duration.pipe.ts
+```
+
+#### Código del pipe
+
+```ts
+import { Pipe, PipeTransform } from "@angular/core";
+
+@Pipe({
+  name: "duration",
+
+  standalone: true,
+})
+export class DurationPipe implements PipeTransform {
+  transform(minutes: number | null | undefined): string {
+    if (minutes == null) {
+      return "Sin duración";
+    }
+
+    const hours = Math.floor(minutes / 60);
+
+    const remainingMinutes = minutes % 60;
+
+    if (hours === 0) {
+      return `${remainingMinutes} min`;
+    }
+
+    return `${hours} h ${remainingMinutes} min`;
+  }
+}
+```
+
+#### Uso en un componente standalone
+
+```ts
+import { Component } from "@angular/core";
+
+import { DurationPipe } from "../shared/pipes/duration.pipe";
+
+@Component({
+  selector: "app-movie-card",
+
+  standalone: true,
+
+  imports: [DurationPipe],
+
+  template: `
+    <h3>{{ movie.title }}</h3>
+
+    <p>Duración: {{ movie.durationInMinutes | duration }}</p>
+  `,
+})
+export class MovieCardComponent {
+  movie = {
+    title: "Interestelar",
+
+    durationInMinutes: 169,
+  };
+}
+```
+
+#### Explicación del ejemplo
+
+Este pipe hace esto:
+
+1. Recibe la duración en minutos.
+
+2. Calcula horas y minutos.
+
+3. Devuelve un texto más legible para la UI.
+
+4. Si no hay valor, devuelve `"Sin duración"`.
+
+Si el valor es `169`, en pantalla se muestra:
+
+```txt
+2 h 49 min
+```
+
+---
+
+### 7.4 Cuándo conviene usar un pipe
+
+Conviene usar un pipe cuando:
+
+- la transformación es de presentación;
+
+- querés reutilizar el mismo formato en varias pantallas;
+
+- la lógica es simple y se entiende mejor desde el template.
+
+No conviene usar un pipe cuando:
+
+- la lógica depende de llamadas HTTP;
+
+- necesitás navegar o manejar sesión;
+
+- la transformación pertenece a negocio y no a presentación.
+
+---
+
+> El pipe mejora la legibilidad del template y reutiliza formato de datos en la vista.
+
